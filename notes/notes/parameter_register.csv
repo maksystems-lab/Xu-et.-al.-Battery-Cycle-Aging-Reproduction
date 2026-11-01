@@ -1,0 +1,12 @@
+symbol,meaning,unit,value,equation,source,notes
+\(E^{rate}\)	Rated battery energy capacity	MWh	12.5
+\(D\)	Charging power limit in Eq. 10	MW	20
+\(G\)	Discharging power limit in Eq. 11	MW	20
+\(\eta^{ch}\)	Charging efficiency	Dimensionless	0.95
+\(\eta^{dis}\)	Discharging efficiency	Dimensionless	0.95
+\(E^{min}\)	Minimum stored energy	MWh	1.875
+\(E^{max}\)	Maximum stored energy	MWh	11.875
+\(J\)	Number of depth segments	Dimensionless	1 or 16
+\(M\)	Market-interval duration	Hours	1
+\(R\)	Total battery replacement cost	USD	3,750,000
+\(T\)	Number of intervals in optimisation horizon	Intervals	24

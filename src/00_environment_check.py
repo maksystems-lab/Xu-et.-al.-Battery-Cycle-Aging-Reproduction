@@ -35,3 +35,4 @@ print("Termination condition:",
 print("x =", pyo.value(model.x))
 print("y =", pyo.value(model.y))
 print("Objective =", pyo.value(model.objective))
+

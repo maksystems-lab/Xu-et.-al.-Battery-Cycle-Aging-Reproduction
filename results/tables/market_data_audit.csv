@@ -1,0 +1,12 @@
+Metric,Value
+Observations,8760
+Start date,2015-01-01
+End date,2015-12-31
+Mean price,42.23358789954338
+Median price,30.21
+Standard deviation,34.32895466258898
+Minimum price,-4.95
+Maximum price,252.86
+Negative-price observations,5
+Zero-price observations,7
+Duplicate date-hour keys,0
