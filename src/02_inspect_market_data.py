@@ -62,7 +62,14 @@ print(df.isna().sum())
 
 df.columns = [str(c).strip() for c in df.columns]
 
-required = ["Date", "Hour", "DA_LMP"]
+required = [
+    "Date",
+    "Hour",
+    "DA_LMP",
+    "DA_EC",
+    "DA_CC",
+    "DA_MLC"
+]
 
 if not all(c in df.columns for c in required):
     raise ValueError("Required columns are missing.")
@@ -325,4 +332,33 @@ monthly.to_csv(
 print("\nMONTHLY PRICE SUMMARY:")
 print(monthly.round(3))
 
+
+# Verify that total LMP equals its components.
+
+component_sum = (
+    df["DA_EC"]
+    + df["DA_CC"]
+    + df["DA_MLC"]
+)
+
+residual = df["DA_LMP"] - component_sum
+
+print("\nPRICE COMPONENT VERIFICATION")
+print("Maximum absolute residual:", residual.abs().max())
+
+assert residual.abs().max() < 1e-8
+
+print("LMP component identity: PASS")
+
+
 print("\nANALYSIS COMPLETE.")
+
+
+# Inspect all exact-zero DA-LMP observations.
+
+zero_prices = df[df["DA_LMP"] == 0][
+    ["Date", "Hour", "DA_LMP", "DA_EC", "DA_CC", "DA_MLC"]
+]
+
+print("\nZERO-PRICE OBSERVATIONS")
+print(zero_prices.to_string(index=False))

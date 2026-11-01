@@ -1,19 +1,11 @@
-# Python virtual environment
-.venv/
-
-# Python cache
+﻿.venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
 
-# Original research datasets
 data/raw/
-
-# Processed research data
 data/processed/
 
-# Temporary editor files
-*.tmp
-.DS_Store/references/*.pdf
+references/*.pdf
 
-/references/*.pdf
+.DS_Store
