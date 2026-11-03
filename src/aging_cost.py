@@ -1,4 +1,5 @@
 
+
 import math
 
 
@@ -24,11 +25,11 @@ def segment_marginal_cost(
     energy_capacity: float
 ) -> float:
     """
-    Calculate the marginal aging cost of segment j.
+    Calculate the marginal aging cost of segment j
 
-    j: segment number, starting at 1.
+    j: segment number, starting at 1
     J: total number of segments.
-    replacement_cost: total battery replacement cost ($).
+    replacement_cost: total battery replacement cost $
     eta_dis: discharge efficiency.
     energy_capacity: rated battery energy (MWh).
 
@@ -56,17 +57,17 @@ def segment_marginal_cost(
     if energy_capacity <= 0:
         raise ValueError("Energy capacity must be positive.")
 
-    # Calculate segment boundaries.
+   
     delta_lower = (j - 1) / J
     delta_upper = j / J
 
-    # Calculate the degradation increment.
+
     stress_increment = (
         cycle_stress(delta_upper)
         - cycle_stress(delta_lower)
     )
 
-    # Calculate marginal aging cost.
+
     cost = (
         replacement_cost
         / (eta_dis * energy_capacity)
