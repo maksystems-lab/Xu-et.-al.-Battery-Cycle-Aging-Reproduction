@@ -1,34 +1,34 @@
 import pyomo.environ as pyo
 
-# Create an optimisation model.
+
 model = pyo.ConcreteModel()
 
-# Define decision variables.
+#  decision variables.
 model.x = pyo.Var(domain=pyo.NonNegativeReals)
 model.y = pyo.Var(domain=pyo.Binary)
 
-# Define the objective function.
+#  the objective function.
 model.objective = pyo.Objective(
     expr=model.x + 3 * model.y,
     sense=pyo.minimize
 )
 
-# Define the constraint.
+#  the constraint.
 model.constraint = pyo.Constraint(
     expr=model.x >= 4 * (1 - model.y)
 )
 
-# Select the HiGHS solver.
+#   HiGHS solver.
 solver = pyo.SolverFactory("appsi_highs")
 
-# Check solver availability.
+#  solver availability.
 print("Solver available:",
       solver.available(exception_flag=False))
 
-# Solve the mathematical problem.
+# Solve .
 results = solver.solve(model)
 
-# Display the results.
+#  results.
 print("Termination condition:",
       results.solver.termination_condition)
 
