@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 from aging_cost import cycle_stress, segment_marginal_cost
 
 
-# -------------------------------------------------
+
 # 1. Project paths
-# -------------------------------------------------
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -21,18 +21,17 @@ FIGURE_DIR.mkdir(parents=True, exist_ok=True)
 TABLE_DIR.mkdir(parents=True, exist_ok=True)
 
 
-# -------------------------------------------------
+
 # 2. Published case-study parameters
-# -------------------------------------------------
+
 
 REPLACEMENT_COST = 3_750_000
 DISCHARGE_EFFICIENCY = 0.95
 ENERGY_CAPACITY = 12.5
 
 
-# -------------------------------------------------
 # 3. Verify the stress function
-# -------------------------------------------------
+
 
 stress_at_80 = cycle_stress(0.80)
 reference_stress = 1 / 3000
@@ -49,9 +48,7 @@ print(
 )
 
 
-# -------------------------------------------------
 # 4. Calculate marginal costs for J = 1 and J = 16
-# -------------------------------------------------
 
 rows = []
 
@@ -76,13 +73,12 @@ for J in [1, 16]:
         })
 
 
-# Convert calculated results into a table.
+
 results = pd.DataFrame(rows)
 
 
-# -------------------------------------------------
+
 # 5. Save the numerical results
-# -------------------------------------------------
 
 output_csv = TABLE_DIR / "marginal_aging_costs.csv"
 
@@ -94,9 +90,9 @@ print(results.to_string(index=False))
 print("\nSaved results to:", output_csv)
 
 
-# -------------------------------------------------
+
 # 6. Verify selected values independently
-# -------------------------------------------------
+
 
 expected_values = [
     (1, 1, 165.47368421052633),
@@ -128,9 +124,7 @@ for J, j, expected in expected_values:
     )
 
 
-# -------------------------------------------------
-# 7. Plot marginal aging cost against depth
-# -------------------------------------------------
+
 
 fig, ax = plt.subplots(figsize=(10, 6))
 
